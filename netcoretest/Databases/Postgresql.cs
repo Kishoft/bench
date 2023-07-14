@@ -7,7 +7,7 @@ namespace netcoretest.Databases
     {
         public Postgresql(DbContextOptions<Postgresql> optionsBuilder) : base(optionsBuilder)
         {
-
+            Database.EnsureCreated();
         }
 
         public DbSet<User> Users => Set<User>();
