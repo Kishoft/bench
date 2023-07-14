@@ -12,7 +12,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Postgresql>(options =>
 {
-    options.UseNpgsql("Host=localhost;Database=testinpapu;Username=ezequiel;Password=chichito");
+    options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito");
 });
 builder.Services.AddScoped<UserService>();
 
