@@ -5,8 +5,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 builder.WebHost.UseKestrel(options => {
-    options.Limits.MaxConcurrentConnections = 500;
-    options.Limits.MaxConcurrentUpgradedConnections = 500;
+    options.Limits.MaxConcurrentConnections = 2200;
+    options.Limits.MaxConcurrentUpgradedConnections = 2200;
 });
 
 builder.Services.AddControllers();

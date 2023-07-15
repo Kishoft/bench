@@ -33,6 +33,8 @@ namespace netcoretest.Controllers
                 firstName = userDto.firstName,
                 lastName = userDto.lastName,
             };
+
+
             await db.Users.AddAsync(user);
             if (await db.SaveChangesAsync() > 0)
             {
