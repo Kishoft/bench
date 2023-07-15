@@ -3,7 +3,7 @@ using netcoretest.Databases;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.UseHttpSys();
+builder.WebHost.UseQuic();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
