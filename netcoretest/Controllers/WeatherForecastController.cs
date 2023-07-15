@@ -9,38 +9,44 @@ namespace netcoretest.Controllers
     [Route("user")]
     public class WeatherForecastController : ControllerBase
     {
-        private readonly Postgresql db;
 
+        WeatherForecastScopedFactory factory;
 
-        public WeatherForecastController(Postgresql db)
+        public WeatherForecastController(WeatherForecastScopedFactory factory)
         {
-            this.db = db;
+            this.factory = factory;
         }
 
         [HttpGet]
         public async Task<IResult> Get()
         {
-            var result = await db.Users.ToListAsync();
-            return TypedResults.Ok(result);
+            using var db = factory.CreateDbContext();
+            {
+                var result = await db.Users.ToListAsync();
+                return TypedResults.Ok(result);
+            }
         }
 
         [HttpPost]
         public async Task<IResult> Post([FromBody] UserDTO userDto)
         {
-            var user = new User
+            using var db = factory.CreateDbContext();
             {
-                Email = userDto.Email,
-                firstName = userDto.firstName,
-                lastName = userDto.lastName,
-            };
+                var user = new User
+                {
+                    Email = userDto.Email,
+                    firstName = userDto.firstName,
+                    lastName = userDto.lastName,
+                };
 
 
-            await db.Users.AddAsync(user);
-            if (await db.SaveChangesAsync() > 0)
-            {
-                return TypedResults.Ok();
+                await db.Users.AddAsync(user);
+                if (await db.SaveChangesAsync() > 0)
+                {
+                    return TypedResults.Ok();
+                }
+                else return TypedResults.BadRequest();
             }
-            else return TypedResults.BadRequest();
         }
 
     }
