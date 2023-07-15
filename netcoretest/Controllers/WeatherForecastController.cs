@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using netcoretest.Databases;
 using netcoretest.Models;
-using netcoretest.Services;
 
 namespace netcoretest.Controllers
 {
@@ -8,27 +9,38 @@ namespace netcoretest.Controllers
     [Route("user")]
     public class WeatherForecastController : ControllerBase
     {
-        private readonly UserService _userService;
+        private readonly Postgresql db;
 
         private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, UserService userService)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, Postgresql db)
         {
             _logger = logger;
-            _userService = userService;
+            this.db = db;
         }
 
         [HttpGet]
         public async Task<IResult> Get()
         {
-            return TypedResults.Ok(await _userService.all());
+            var result = await db.Users.AsNoTracking().ToListAsync();
+            return TypedResults.Ok(result);
         }
 
         [HttpPost]
-        public async Task<IResult> Post([FromBody] UserDTO user)
+        public async Task<IResult> Post([FromBody] UserDTO userDto)
         {
-            await _userService.create(user);
-            return TypedResults.Ok();
+            var user = new User
+            {
+                Email = userDto.Email,
+                firstName = userDto.firstName,
+                lastName = userDto.lastName,
+            };
+            await db.Users.AddAsync(user);
+            if (await db.SaveChangesAsync() > 0)
+            {
+                return TypedResults.Ok();
+            }
+            else return TypedResults.BadRequest();
         }
 
     }

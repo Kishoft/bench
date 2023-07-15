@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using netcoretest.Databases;
-using netcoretest.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +13,6 @@ builder.Services.AddDbContext<Postgresql>(options =>
 {
     options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito");
 });
-builder.Services.AddScoped<UserService>();
 
 var app = builder.Build();
 
