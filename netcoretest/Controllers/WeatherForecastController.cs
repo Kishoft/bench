@@ -20,7 +20,7 @@ namespace netcoretest.Controllers
         [HttpGet]
         public async Task<IResult> Get()
         {
-            var result = await db.Users.AsNoTracking().ToListAsync();
+            var result = await db.Users.ToListAsync();
             return TypedResults.Ok(result);
         }
 

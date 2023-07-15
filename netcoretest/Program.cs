@@ -3,17 +3,17 @@ using netcoretest.Databases;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.WebHost.ConfigureKestrel(opt => {
-    opt.Limits.MaxConcurrentConnections = 2200;
-    opt.Limits.MaxConcurrentUpgradedConnections = 2200;
+
+builder.WebHost.UseKestrel(options => {
+    options.Limits.MaxConcurrentConnections = 500;
+    options.Limits.MaxConcurrentUpgradedConnections = 500;
 });
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 //builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<Postgresql>(options =>
+builder.Services.AddDbContextPool<Postgresql>(options =>
 {
     options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito");
 });
