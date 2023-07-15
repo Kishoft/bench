@@ -3,12 +3,6 @@ using netcoretest.Databases;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-builder.WebHost.UseKestrel(options => {
-    options.Limits.MaxConcurrentConnections = 2200;
-    options.Limits.MaxConcurrentUpgradedConnections = 2200;
-});
-
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
