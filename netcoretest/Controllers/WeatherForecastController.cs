@@ -23,6 +23,7 @@ namespace netcoretest.Controllers
             using var db = factory.CreateDbContext();
             {
                 var result = await db.Users.ToListAsync();
+                await db.DisposeAsync();
                 return TypedResults.Ok(result);
             }
         }
@@ -41,7 +42,9 @@ namespace netcoretest.Controllers
 
 
                 await db.Users.AddAsync(user);
-                if (await db.SaveChangesAsync() > 0)
+                var result = await db.SaveChangesAsync() > 0;
+                await db.DisposeAsync();
+                if (result)
                 {
                     return TypedResults.Ok();
                 }
