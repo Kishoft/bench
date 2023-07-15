@@ -11,11 +11,9 @@ namespace netcoretest.Controllers
     {
         private readonly Postgresql db;
 
-        private readonly ILogger<WeatherForecastController> _logger;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, Postgresql db)
+        public WeatherForecastController(Postgresql db)
         {
-            _logger = logger;
             this.db = db;
         }
 
