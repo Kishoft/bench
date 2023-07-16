@@ -15,6 +15,12 @@ namespace netcoretest.Controllers
             this.db = db;
         }
 
+        [HttpGet("/test")]
+        public async Task<IResult> Get(int id)
+        {
+            return TypedResults.NoContent();
+        }
+
         [HttpGet]
         public async Task<IResult> Get()
         {
