@@ -5,9 +5,9 @@ namespace netcoretest.Models
     public class User
     {
         public int Id { get; set; }
-        public string firstName { get; set; }
-        public string lastName { get; set; }
-        public string Email { get; set; }
+        public string firstName { get; set; } = null!;
+        public string lastName { get; set; } = null!;
+        public string Email { get; set; } = null!;
         public bool isActive { get; set; } = true;
     }
 }

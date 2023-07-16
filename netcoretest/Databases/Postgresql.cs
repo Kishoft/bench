@@ -5,13 +5,11 @@ namespace netcoretest.Databases
 {
     public class Postgresql : DbContext
     {
+        public DbSet<User> Users { get; set; } = null!;
         public Postgresql(DbContextOptions<Postgresql> optionsBuilder) : base(optionsBuilder)
         {
             Database.EnsureCreated();
         }
-
-        public DbSet<User> Users => Set<User>();
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

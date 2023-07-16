@@ -10,8 +10,6 @@ namespace netcoretest.Controllers
     public class WeatherForecastController : ControllerBase
     {
         private readonly Postgresql db;
-
-
         public WeatherForecastController(Postgresql db)
         {
             this.db = db;
@@ -34,8 +32,8 @@ namespace netcoretest.Controllers
                 lastName = userDto.lastName,
             };
 
-
             await db.Users.AddAsync(user);
+            
             if (await db.SaveChangesAsync() > 0)
             {
                 return TypedResults.Ok();
