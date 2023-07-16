@@ -9,7 +9,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://localhost:5000/test', JSON.stringify({
+  const res = http.get('http://192.168.1.38:5000/test', JSON.stringify({
     "firstName": "eze",
     "lastName": "quiel",
     "email": "asdasda@asdada.com"

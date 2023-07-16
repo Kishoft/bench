@@ -9,7 +9,7 @@ export const options = {
 };
 
 export default function () {
-  const res =  http.get('http://localhost:3000/');
+  const res =  http.get('http://192.168.1.38:3000/');
   check(res, { 'status was 204': (r) => r.status == 204 });
   sleep(1);
 }
