@@ -12,7 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Postgresql>(options =>
 {
     options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito;Enlist=false;Pooling=true");
-});
+}, ServiceLifetime.Transient);
 
 var app = builder.Build();
 

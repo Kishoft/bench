@@ -5,15 +5,11 @@ import { check, sleep } from 'k6';
 export const options = {
   stages: [
     { duration: '1s', target: 1000 },
-    { duration: '1s', target: 1000 },
-    { duration: '1s', target: 1000 },
-    { duration: '1s', target: 1000 },
-    { duration: '1s', target: 1000 },
   ],
 };
 
 export default function () {
-  const res = http.post('http://192.168.1.38:5000/user', JSON.stringify({
+  const res = http.post('http://localhost:5000/user', JSON.stringify({
     "firstName": "eze",
     "lastName": "quiel",
     "email": "asdasda@asdada.com"
