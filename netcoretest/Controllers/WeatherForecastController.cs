@@ -38,8 +38,6 @@ namespace netcoretest.Controllers
                 lastName = userDto.lastName,
             };
 
-            db.ChangeTracker.AutoDetectChangesEnabled = false;
-
             await db.AddAsync(user);
 
             if (await db.SaveChangesAsync() > 0)
