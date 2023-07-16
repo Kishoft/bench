@@ -16,9 +16,9 @@ namespace netcoretest.Controllers
         }
 
         [HttpGet]
-        public async Task<IResult> Get()
+        public IResult Get()
         {
-            var result = await db.Users.ToListAsync();
+            var result = db.Users.ToList();
             return TypedResults.Ok(result);
         }
 
@@ -33,7 +33,7 @@ namespace netcoretest.Controllers
             };
 
             await db.Users.AddAsync(user);
-            
+
             if (await db.SaveChangesAsync() > 0)
             {
                 return TypedResults.Ok();
