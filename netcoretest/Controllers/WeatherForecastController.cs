@@ -18,7 +18,7 @@ namespace netcoretest.Controllers
         [HttpGet]
         public async Task<IResult> Get()
         {
-            var result = await db.Users.ToListAsync();
+            var result =  db.GetAll();
             return TypedResults.Ok(result);
         }
 
@@ -32,7 +32,7 @@ namespace netcoretest.Controllers
                 lastName = userDto.lastName,
             };
 
-            await db.Users.AddAsync(user);
+            db.Add(user);
 
             if (await db.SaveChangesAsync() > 0)
             {
