@@ -9,11 +9,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://192.168.1.38:5000/test', JSON.stringify({
-    "firstName": "eze",
-    "lastName": "quiel",
-    "email": "asdasda@asdada.com"
-  }), { headers: { 'Content-Type': 'application/json' } });
+  const res =  http.get('http://192.168.1.38:3000/');
   check(res, { 'status was 204': (r) => r.status == 204 });
   sleep(1);
 }
