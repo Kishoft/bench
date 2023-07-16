@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ezequiel\\source\\repos\\netcoretest\\netcoretest.csproj": {}
+    "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\netcoretest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ezequiel\\source\\repos\\netcoretest\\netcoretest.csproj": {
+    "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\netcoretest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ezequiel\\source\\repos\\netcoretest\\netcoretest.csproj",
+        "projectUniqueName": "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\netcoretest.csproj",
         "projectName": "netcoretest",
-        "projectPath": "C:\\Users\\Ezequiel\\source\\repos\\netcoretest\\netcoretest.csproj",
+        "projectPath": "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\netcoretest.csproj",
         "packagesPath": "C:\\Users\\Ezequiel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ezequiel\\source\\repos\\netcoretest\\obj\\",
+        "outputPath": "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
