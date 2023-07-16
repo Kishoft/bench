@@ -16,9 +16,9 @@ namespace netcoretest.Controllers
         }
 
         [HttpGet]
-        public IResult Get()
+        public async Task<IResult> Get()
         {
-            var result = db.Users.ToList();
+            var result = await db.Users.ToListAsync();
             return TypedResults.Ok(result);
         }
 
