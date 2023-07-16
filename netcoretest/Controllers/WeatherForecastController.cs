@@ -18,7 +18,7 @@ namespace netcoretest.Controllers
         [HttpGet]
         public async Task<IResult> Get()
         {
-            var result =  db.GetAll();
+            var result = await db.Users.AsNoTracking().ToListAsync();
             return TypedResults.Ok(result);
         }
 
@@ -32,7 +32,9 @@ namespace netcoretest.Controllers
                 lastName = userDto.lastName,
             };
 
-            db.Add(user);
+            db.ChangeTracker.AutoDetectChangesEnabled = false;
+
+            await db.AddAsync(user);
 
             if (await db.SaveChangesAsync() > 0)
             {
