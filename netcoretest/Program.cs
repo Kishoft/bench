@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContextPool<Postgresql>(options =>
 {
-    options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito");
+    options.UseNpgsql("Host=192.168.1.38;Database=testinpapu;Username=ezequiel;Password=chichito");
 });
 
 var app = builder.Build();

@@ -11,8 +11,8 @@ using netcoretest.Databases;
 namespace netcoretest.Migrations
 {
     [DbContext(typeof(Postgresql))]
-    [Migration("20230714104721_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20230716065341_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -48,6 +48,9 @@ namespace netcoretest.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
 
                     b.ToTable("Users");
                 });
