@@ -9,10 +9,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContextPool<Postgresql>(options =>
+builder.Services.AddDbContext<Postgresql>(options =>
 {
     options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito;Enlist=false;Pooling=true;MinPoolSize=10;MaxPoolSize=200");
-}, 2048);
+}, ServiceLifetime.Transient);
 
 var app = builder.Build();
 
