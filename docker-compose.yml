@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: ezequiel
       POSTGRES_PASSWORD: chichito
-      POSTGRES_MAX_CONNECTIONS: 800
+      POSTGRES_MAX_CONNECTIONS: 12000
     ports:
       - 5432:5432
   nest:
