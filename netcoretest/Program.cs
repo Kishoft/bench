@@ -11,7 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<Postgresql>(options =>
 {
-    options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito;Pooling=true;MinPoolSize=800;MaxPoolSize=12000;NoResetOnClose=true");
+    options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito;Pooling=true;MinPoolSize=200;MaxPoolSize=800;NoResetOnClose=true");
 
 });
 
