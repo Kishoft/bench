@@ -1,12 +1,22 @@
+using System.Threading.RateLimiting;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using netcoretest.Databases;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.WebHost.ConfigureKestrel(options => {
+builder.WebHost.ConfigureKestrel(options =>
+{
     options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(10);
     options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(10);
 });
+
+builder.Services.AddRateLimiter(_ => _.AddConcurrencyLimiter(policyName: "Concurrency", options =>
+{
+    options.PermitLimit = 500;
+    options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
+    options.QueueLimit = 1000000;
+}));
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
