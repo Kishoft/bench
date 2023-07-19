@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using netcoretest.Databases;
 using netcoretest.Models;
@@ -7,6 +8,7 @@ namespace netcoretest.Controllers
 {
     [ApiController]
     [Route("user")]
+    [EnableRateLimiting("Concurrency")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly Postgresql db;

@@ -29,6 +29,8 @@ builder.Services.AddDbContextPool<Postgresql>(options =>
 
 var app = builder.Build();
 
+app.UseRateLimiter();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
