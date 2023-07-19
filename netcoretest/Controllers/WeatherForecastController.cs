@@ -8,7 +8,7 @@ namespace netcoretest.Controllers
 {
     [ApiController]
     [Route("user")]
-    [EnableRateLimiting("Concurrency")]
+    [EnableRateLimiting("fixed")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly Postgresql db;

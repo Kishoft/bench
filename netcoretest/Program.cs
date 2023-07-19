@@ -1,5 +1,5 @@
-using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.RateLimiting;
+using System.Threading.RateLimiting;
 using Microsoft.EntityFrameworkCore;
 using netcoretest.Databases;
 
@@ -11,9 +11,12 @@ builder.WebHost.ConfigureKestrel(options =>
     options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(10);
 });
 
-builder.Services.AddRateLimiter(_ => _.AddConcurrencyLimiter(policyName: "Concurrency", options =>
+var fixedPolicy = "fixed";
+
+builder.Services.AddRateLimiter(_ => _.AddFixedWindowLimiter(policyName: fixedPolicy, options =>
 {
     options.PermitLimit = 500;
+    options.Window = TimeSpan.FromMinutes(1);
     options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
     options.QueueLimit = 1000000;
 }));
