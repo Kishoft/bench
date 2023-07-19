@@ -13,12 +13,11 @@ builder.WebHost.ConfigureKestrel(options =>
 
 var fixedPolicy = "fixed";
 
-builder.Services.AddRateLimiter(_ => _.AddFixedWindowLimiter(policyName: fixedPolicy, options =>
+builder.Services.AddRateLimiter(_ => _.AddConcurrencyLimiter(policyName: fixedPolicy, options =>
 {
-    options.PermitLimit = 500;
-    options.Window = TimeSpan.FromMinutes(1);
+    options.PermitLimit = 10;
+    options.QueueLimit = 6000000;
     options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
-    options.QueueLimit = 1000000;
 }));
 
 builder.Services.AddControllers();
