@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Wq87kvxv6gB+0vVWxkt9ALPm6z6pnLJ8q7DFYk8hwLA=",
+  "Source": "netcoretest",
+  "BasePath": "_content/netcoretest",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

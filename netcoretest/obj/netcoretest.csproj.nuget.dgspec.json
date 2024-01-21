@@ -1,38 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\netcoretest.csproj": {}
+    "/Users/Ezequiel/Documents/GitHub/bench/netcoretest/netcoretest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\netcoretest.csproj": {
+    "/Users/Ezequiel/Documents/GitHub/bench/netcoretest/netcoretest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\netcoretest.csproj",
+        "projectUniqueName": "/Users/Ezequiel/Documents/GitHub/bench/netcoretest/netcoretest.csproj",
         "projectName": "netcoretest",
-        "projectPath": "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\netcoretest.csproj",
-        "packagesPath": "C:\\Users\\Ezequiel\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Ezequiel\\Documents\\GitHub\\bench\\netcoretest\\obj\\",
+        "projectPath": "/Users/Ezequiel/Documents/GitHub/bench/netcoretest/netcoretest.csproj",
+        "packagesPath": "/Users/Ezequiel/.nuget/packages/",
+        "outputPath": "/Users/Ezequiel/Documents/GitHub/bench/netcoretest/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Ezequiel\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/Ezequiel/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "net7.0"
+          "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "net7.0": {
-            "targetAlias": "net7.0",
+          "net8.0": {
+            "targetAlias": "net8.0",
             "projectReferences": {}
           }
         },
@@ -43,34 +35,34 @@
         }
       },
       "frameworks": {
-        "net7.0": {
-          "targetAlias": "net7.0",
+        "net8.0": {
+          "targetAlias": "net8.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[7.0.9, )"
+              "version": "[8.0.1, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[7.0.9, )"
+              "version": "[8.0.1, )"
             },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.9, )"
+              "version": "[8.0.1, )"
             },
             "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
               "target": "Package",
-              "version": "[1.18.1, )"
+              "version": "[1.19.6, )"
             },
             "Npgsql": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[8.0.1, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
-              "version": "[7.0.4, )"
+              "version": "[8.0.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -96,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
