@@ -42,9 +42,9 @@ namespace netcoretest.Controllers
                     lastName = userDto.lastName,
                 };
 
-                db.Add(user);
+                await db.AddAsync(user);
 
-                 db.SaveChanges();
+                await db.SaveChangesAsync();
                 
                 return TypedResults.Ok();
             }
