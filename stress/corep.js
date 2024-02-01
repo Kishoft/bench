@@ -4,8 +4,9 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '10s', target: 10000 },
-  ],
+    { duration: '1s', target: 200 },
+    { duration: '9s', target: 700 },
+  ]
 };
 
 export default function () {
@@ -15,5 +16,4 @@ export default function () {
     "email": "asdasda@asdada.com"
   }), { headers: { 'Content-Type': 'application/json' } });
   check(res, { 'status was 200': (r) => r.status == 200 });
-  sleep(1);
 }
