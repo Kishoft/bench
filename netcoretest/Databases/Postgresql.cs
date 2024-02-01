@@ -9,6 +9,7 @@ namespace netcoretest.Databases
         public Postgresql(DbContextOptions<Postgresql> optionsBuilder) : base(optionsBuilder)
         {
             Database.EnsureCreated();
+            Database.AutoTransactionBehavior = AutoTransactionBehavior.WhenNeeded;
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
