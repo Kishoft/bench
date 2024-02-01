@@ -2,8 +2,9 @@ import { Injectable } from '@nestjs/common';
 
 const cluster = require('cluster'); 
 import * as process from 'node:process';
+import * as os from 'os';
 
-const numCPUs = parseInt(process.argv[2] || "1");
+const numCPUs = parseInt(os.cpus().length.toString());
 
 @Injectable()
 export class ClusterService {
