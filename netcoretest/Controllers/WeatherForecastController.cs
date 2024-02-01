@@ -52,9 +52,10 @@ namespace netcoretest.Controllers
                 }
                 return TypedResults.Ok();
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 await transaction.RollbackAsync();
+                Console.WriteLine(e.Message);
                 return TypedResults.BadRequest();
             }
 
