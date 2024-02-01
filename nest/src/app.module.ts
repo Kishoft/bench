@@ -5,6 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './user/user.entity';
 import { Post } from './user/post.entity';
 import { UserModule } from './user/user.module';
+import { ClusterService } from './cluster.service';
 
 @Module({
   imports: [
@@ -23,6 +24,6 @@ import { UserModule } from './user/user.module';
     UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, ClusterService],
 })
 export class AppModule {}
