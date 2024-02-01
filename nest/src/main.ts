@@ -4,9 +4,8 @@ import { ValidationPipe } from '@nestjs/common';
 
 const cluster = require('cluster'); 
 import * as process from 'node:process';
-import * as os from 'os';
 
-const numCPUs = parseInt(os.cpus().length.toString());
+const numCPUs = 4;
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
