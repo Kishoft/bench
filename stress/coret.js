@@ -4,12 +4,12 @@ import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
-    { duration: '1s', target: 5000 },
+    { duration: '10s', target: 50000 },
   ],
 };
 
 export default function () {
-  const res = http.get('http://192.168.1.38:5000/test', JSON.stringify({
+  const res = http.get('http://127.0.0.1:6000/test', JSON.stringify({
     "firstName": "eze",
     "lastName": "quiel",
     "email": "asdasda@asdada.com"
