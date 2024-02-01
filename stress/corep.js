@@ -9,7 +9,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.post('http://127.0.0.1:5000/user', JSON.stringify({
+  const res = http.post('http://127.0.0.1:6000/user', JSON.stringify({
     "firstName": "eze",
     "lastName": "quiel",
     "email": "asdasda@asdada.com"
