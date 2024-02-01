@@ -43,12 +43,12 @@ namespace netcoretest.Controllers
                     lastName = userDto.lastName,
                 };
 
-            var context = db.CreateDbContext();
-                 context.Add(user);
+                var context = await db.CreateDbContextAsync();
+                await context.AddAsync(user);
 
-                 context.SaveChanges();
-                context.Dispose();
-                
+                await context.SaveChangesAsync();
+                await context.DisposeAsync();
+
                 return TypedResults.Ok();
             }
             catch (Exception e)
