@@ -33,21 +33,31 @@ namespace netcoretest.Controllers
         [HttpPost]
         public async Task<IResult> Post([FromBody] UserDTO userDto)
         {
-            var user = new User
-            {
-                Email = userDto.Email,
-                firstName = userDto.firstName,
-                lastName = userDto.lastName,
-            };
+            var transaction = await db.Database.BeginTransactionAsync();
 
-            await db.AddAsync(user);
-
-            if (await db.SaveChangesAsync() > 0)
+            try
             {
+                var user = new User
+                {
+                    Email = userDto.Email,
+                    firstName = userDto.firstName,
+                    lastName = userDto.lastName,
+                };
+
+                await db.AddAsync(user);
+
+                if (await db.SaveChangesAsync() > 0)
+                {
+                    await transaction.CommitAsync();
+                }
                 return TypedResults.Ok();
             }
-            else return TypedResults.BadRequest();
-        }
+            catch (Exception)
+            {
+                await transaction.RollbackAsync();
+                return TypedResults.BadRequest();
+            }
 
+        }
     }
 }
