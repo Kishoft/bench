@@ -14,7 +14,7 @@ builder.WebHost.ConfigureKestrel(options =>
 builder.Services.AddRateLimiter(_ => _.AddConcurrencyLimiter(policyName: "fixed", options =>
 {
     options.PermitLimit = 2;
-    options.QueueLimit = 5000;
+    options.QueueLimit = 500000;
     options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
 }));
 
@@ -24,8 +24,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContextPool<Postgresql>(options =>
 {
-    options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito;Pooling=true;MaxPoolSize=20;CommandTimeout=0;CancellationTimeout=0");
-}, 20);
+    options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito;Pooling=true;MaxPoolSize=1024;CommandTimeout=0;CancellationTimeout=0");
+});
 
 var app = builder.Build();
 
