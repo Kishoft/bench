@@ -13,8 +13,8 @@ builder.WebHost.ConfigureKestrel(options =>
 
 builder.Services.AddRateLimiter(_ => _.AddConcurrencyLimiter(policyName: "fixed", options =>
 {
-    options.PermitLimit = 10;
-    options.QueueLimit = 6000000;
+    options.PermitLimit = 2;
+    options.QueueLimit = 5000;
     options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
 }));
 
@@ -40,6 +40,6 @@ if (app.Environment.IsDevelopment())
 
 //app.UseHttpsRedirection();
 
-app.MapControllers();
+app.MapControllers().RequireRateLimiting("fixed");
 
 app.Run();
