@@ -28,7 +28,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.post('http://192.168.1.38:5000/user', JSON.stringify({
+  const res = http.post('http://192.168.1.39:5000/user', JSON.stringify({
     "firstName": "eze",
     "lastName": "quiel",
     "email": "asdasda@asdada.com"
