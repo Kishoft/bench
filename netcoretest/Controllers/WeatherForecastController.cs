@@ -31,6 +31,15 @@ namespace netcoretest.Controllers
             return TypedResults.Ok(result);
         }
 
+        public async Task SaveUser(User user)
+        {
+            var context = await db.CreateDbContextAsync();
+            await context.AddAsync(user);
+
+            await context.SaveChangesAsync();
+            await context.DisposeAsync();
+        }
+
         [HttpPost]
         public async Task<IResult> Post([FromBody] UserDTO userDto)
         {
@@ -43,11 +52,7 @@ namespace netcoretest.Controllers
                     lastName = userDto.lastName,
                 };
 
-                var context = await db.CreateDbContextAsync();
-                await context.AddAsync(user);
-
-                await context.SaveChangesAsync();
-                await context.DisposeAsync();
+                SaveUser(user);
 
                 return TypedResults.Ok();
             }
