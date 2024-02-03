@@ -9,6 +9,32 @@ services:
       POSTGRES_MAX_CONNECTIONS: 12000
     ports:
       - 5432:5432
+  nest:
+    build:
+      context: ./nest
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    depends_on:
+      - postgresql
+  dotnet:
+    build:
+      context: ./netcoretest
+      dockerfile: Dockerfile
+    ports:
+      - 6000:6000
+    environment:
+      - ASPNETCORE_URLS=http://+:6000
+    depends_on:
+      - postgresql
+  spring:
+    build:
+      context: ./demo
+      dockerfile: Dockerfile
+    ports:
+      - 3300:3300
+    depends_on:
+      - postgresql
   springreactive:
     build:
       context: ./demo-reactive
