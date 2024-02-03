@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("netcoretest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d4bee6c28312bee2cce7892fe322d224331e1901")]
+<<<<<<< Updated upstream
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+14f4aa7a70b9d555df764c0e83dc86992d06c6dd")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f17e595fa092e3141c643374497c680a8675c3e4")]
+>>>>>>> Stashed changes
 [assembly: System.Reflection.AssemblyProductAttribute("netcoretest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("netcoretest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
