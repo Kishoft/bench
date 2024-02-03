@@ -26,10 +26,9 @@ public class UserController {
         this.userService = userService;
     }
 
-    @SuppressWarnings("null")
+    @SuppressWarnings("rawtypes")
     @PostMapping()
-    @Async
-    public ResponseEntity<?> addUser(@Valid @RequestBody  Pepe user) {
+    public ResponseEntity addUser(@Valid @RequestBody  Pepe user) {
             userService.saveUser(user);
             return ResponseEntity.noContent().build();
     }

@@ -11,8 +11,8 @@ namespace netcoretest.Controllers
     [EnableRateLimiting("fixed")]
     public class WeatherForecastController : ControllerBase
     {
-        private readonly IDbContextFactory<Postgresql> db;
-        public WeatherForecastController(IDbContextFactory<Postgresql> db)
+        private readonly Postgresql db;
+        public WeatherForecastController(Postgresql db)
         {
             this.db = db;
         }
@@ -26,18 +26,16 @@ namespace netcoretest.Controllers
         [HttpGet]
         public async Task<IResult> Get()
         {
-            var context = db.CreateDbContext();
-            var result = await context.Users.AsNoTracking().ToListAsync();
+            var result = await db.Users.AsNoTracking().ToListAsync();
             return TypedResults.Ok(result);
         }
 
         public async Task SaveUser(User user)
         {
-            var context = await db.CreateDbContextAsync();
-            await context.AddAsync(user);
+            await db.AddAsync(user);
 
-            await context.SaveChangesAsync();
-            await context.DisposeAsync();
+            await db.SaveChangesAsync();
+            await db.DisposeAsync();
         }
 
         [HttpPost]
@@ -52,7 +50,7 @@ namespace netcoretest.Controllers
                     lastName = userDto.lastName,
                 };
 
-                SaveUser(user);
+                await SaveUser(user);
 
                 return TypedResults.Ok();
             }
