@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Models.Pepe;
+import com.example.demo.Services.UserService;
 import com.example.demo.repositories.UserRepository;
 
 import jakarta.validation.Valid;
@@ -19,27 +20,18 @@ import jakarta.validation.Valid;
 @RequestMapping("/tttt")
 public class UserController {
 
-    private final UserRepository userRepository;
+    private final UserService userService;
 
-    public UserController(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
     @SuppressWarnings("null")
     @PostMapping()
     @Async
-    public ResponseEntity<?> addUser(@Valid @RequestBody  Pepe user, BindingResult result) {
-        if (result.hasErrors()) {
-            return ResponseEntity.badRequest().body(result.getAllErrors());
-        }
-
-        try {
-            userRepository.save(user);
+    public ResponseEntity<?> addUser(@Valid @RequestBody  Pepe user) {
+            userService.saveUser(user);
             return ResponseEntity.noContent().build();
-        } catch (Exception e) {
-            // Manejar la excepción según tus necesidades
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error al guardar el usuario");
-        }
     }
 
     @GetMapping()
