@@ -9,9 +9,12 @@ import com.chichito.demoreactive.models.Pepe;
 import com.chichito.demoreactive.services.PepeService;
 
 import reactor.core.publisher.Mono;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
-@RequestMapping("/personas")
+@RequestMapping("/user")
 public class PepeController {
 
     private final PepeService pepeService;
@@ -19,6 +22,12 @@ public class PepeController {
     public PepeController(PepeService pepeService) {
         this.pepeService = pepeService;
     }
+
+    @GetMapping()
+    public String hello() {
+        return "Hello";
+    }
+    
 
     @PostMapping
     public Mono<Pepe> crear(@RequestBody Pepe pepe) {
