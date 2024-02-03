@@ -27,12 +27,12 @@ services:
       - ASPNETCORE_URLS=http://+:6000
     depends_on:
       - postgresql
-  springreactive:
+  spring:
     build:
-      context: ./demo-reactive
+      context: ./demo
       dockerfile: Dockerfile
     ports:
-      - 3400:3400
+      - 3300:3300
     depends_on:
       - postgresql
   pgadmin:
