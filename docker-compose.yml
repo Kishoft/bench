@@ -35,6 +35,14 @@ services:
       - 3300:3300
     depends_on:
       - postgresql
+  springreactive:
+    build:
+      context: ./demo-reactive
+      dockerfile: Dockerfile
+    ports:
+      - 3400:3400
+    depends_on:
+      - postgresql
   pgadmin:
     image: dpage/pgadmin4
     restart: always
