@@ -2806,19 +2806,19 @@
     ]
   },
   "packageFolders": {
-    "/Users/Ezequiel/.nuget/packages/": {}
+    "C:\\Users\\ezesw\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/Ezequiel/Documents/GitHub/bench/netcoretest/netcoretest.csproj",
+      "projectUniqueName": "C:\\Users\\ezesw\\OneDrive\\Documentos\\GitHub\\bench\\netcoretest\\netcoretest.csproj",
       "projectName": "netcoretest",
-      "projectPath": "/Users/Ezequiel/Documents/GitHub/bench/netcoretest/netcoretest.csproj",
-      "packagesPath": "/Users/Ezequiel/.nuget/packages/",
-      "outputPath": "/Users/Ezequiel/Documents/GitHub/bench/netcoretest/obj/",
+      "projectPath": "C:\\Users\\ezesw\\OneDrive\\Documentos\\GitHub\\bench\\netcoretest\\netcoretest.csproj",
+      "packagesPath": "C:\\Users\\ezesw\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ezesw\\OneDrive\\Documentos\\GitHub\\bench\\netcoretest\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/Ezequiel/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\ezesw\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -2892,7 +2892,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
