@@ -10,10 +10,11 @@ export const options = {
 };
 
 export default function () {
-  const res = http.post('http://127.0.0.1:3500/products', JSON.stringify({
-    "name": "eze",
-    "price": 12345
+  const res = http.post('http://127.0.0.1:3232/user', JSON.stringify({
+    "firstName": "eze",
+    "lastName": "quiel",
+    "email": "asdasda@asdada.com"
   }), { headers: { 'Content-Type': 'application/json' } });
-  check(res, { 'status was 204': (r) => r.status == 204 });
+  check(res, { 'status was 201': (r) => r.status == 201 });
   sleep(1);
 }
