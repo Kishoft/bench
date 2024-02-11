@@ -8,7 +8,6 @@ namespace netcoretest.Controllers
 {
     [ApiController]
     [Route("user")]
-    [EnableRateLimiting("fixed")]
     public class WeatherForecastController : ControllerBase
     {
         private readonly Postgresql db;
@@ -30,15 +29,8 @@ namespace netcoretest.Controllers
             return TypedResults.Ok(result);
         }
 
-        public async Task SaveUser(User user)
-        {
-            await db.AddAsync(user);
-
-            await db.SaveChangesAsync();
-            await db.DisposeAsync();
-        }
-
         [HttpPost]
+        [EnableRateLimiting("concurrent")]
         public async Task<IResult> Post([FromBody] UserDTO userDto)
         {
             try
@@ -50,7 +42,9 @@ namespace netcoretest.Controllers
                     lastName = userDto.lastName,
                 };
 
-                await SaveUser(user);
+                await db.Users.AddAsync(user);
+
+                await db.SaveChangesAsync();
 
                 return TypedResults.Ok();
             }

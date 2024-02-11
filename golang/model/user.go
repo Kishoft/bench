@@ -9,9 +9,8 @@ import (
 type User struct {
 	gorm.Model
 	ID       uuid.UUID `gorm:"type:uuid;"`
-	Username string    `json:"username" gorm:"unique"`
-	Email    string    `json:"email" gorm:"unique"`
-	Password string    `json:"password"`
+	Username string    `json:"username"`
+	Email    string    `json:"email"`
 }
 
 // Users struct

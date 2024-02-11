@@ -11,7 +11,6 @@ import (
 	"github.com/adhtanjung/go_rest_api/config"
 	"github.com/adhtanjung/go_rest_api/model"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 )
 
 // Database instance
@@ -31,7 +30,9 @@ func Connect() {
 	}
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%d sslmode=disable", config.Config("DB_HOST"), config.Config("DB_USER"), config.Config("DB_PASSWORD"), config.Config("DB_NAME"), port)
 	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
-		Logger: logger.Default.LogMode(logger.Info),
+		//Logger:                 logger.Default.LogMode(logger.Info),
+		SkipDefaultTransaction: true,
+		PrepareStmt:            true,
 	})
 	if err != nil {
 		log.Fatal("Failed to connect to database. \n", err)
@@ -39,7 +40,7 @@ func Connect() {
 	}
 
 	log.Println("Connected")
-	db.Logger = logger.Default.LogMode(logger.Info)
+	//db.Logger = logger.Default.LogMode(logger.Info)
 	log.Println("running migrations")
 	db.AutoMigrate(&model.User{})
 

@@ -17,7 +17,10 @@ import { UserModule } from './user/user.module';
       database: 'ezequiel',
       entities: [User, Post],
       synchronize: true,
-      autoLoadEntities: true
+      autoLoadEntities: true,
+      connectTimeoutMS: 0,
+      poolSize: 20,
+      maxQueryExecutionTime: 10000000
     }),
     UserModule,
   ],

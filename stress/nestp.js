@@ -16,5 +16,4 @@ export default function () {
     "email": "asdasda@asdada.com"
   }), { headers: { 'Content-Type': 'application/json' } });
   check(res, { 'status was 201': (r) => r.status == 201 });
-  sleep(1);
 }
