@@ -27,14 +27,6 @@ services:
       - ASPNETCORE_URLS=http://+:6000
     depends_on:
       - postgresql
-  golang:
-    build:
-      context: ./golang
-      dockerfile: Dockerfile
-    ports:
-      - 3232:3232
-    depends_on:
-      - postgresql
   pgadmin:
     image: dpage/pgadmin4
     restart: always
