@@ -1,4 +1,3 @@
-
 using System.Threading.RateLimiting;
 using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
@@ -9,37 +8,35 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.WebHost.ConfigureKestrel(options =>
 {
-    options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(10);
-    options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(10);
+    options.Limits.MaxRequestBodySize = null;
+    // Request timeout
+    options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(1);
+    // Otros ajustes según sea necesario
 });
-
 builder.Services.AddRateLimiter(_ => _.AddConcurrencyLimiter(policyName: "concurrent", options =>
 {
-    //options.PermitLimit = 200;
-    options.QueueLimit = 10000000;
+    options.PermitLimit = 100;
+    options.QueueLimit = int.MaxValue;
     options.QueueProcessingOrder = QueueProcessingOrder.OldestFirst;
 }));
+
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContextPool<Postgresql>(options =>
 {
-    options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito;Pooling=true");
-});
+    options.UseNpgsql("Host=postgresql;Database=testinpapu;Username=ezequiel;Password=chichito;Pooling=true;CommandTimeout=0;CancellationTimeout=0");
+}, 100);
 
 var app = builder.Build();
 
 app.UseRateLimiter();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-//app.UseHttpsRedirection();
 
 app.MapControllers();
 

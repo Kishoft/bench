@@ -20,8 +20,8 @@ public class DemoApplication {
   public Executor taskExecutor() {
     ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
     executor.setCorePoolSize(200);
-    executor.setMaxPoolSize(200);
-    executor.setQueueCapacity(500);
+    executor.setMaxPoolSize(20000);
+    executor.setQueueCapacity(500000);
     executor.setThreadNamePrefix("eze-");
     executor.initialize();
     return executor;

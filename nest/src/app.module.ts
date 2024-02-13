@@ -19,7 +19,7 @@ import { UserModule } from './user/user.module';
       synchronize: true,
       autoLoadEntities: true,
       connectTimeoutMS: 0,
-      poolSize: 20,
+      poolSize: 100,
       maxQueryExecutionTime: 10000000
     }),
     UserModule,

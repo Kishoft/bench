@@ -10,20 +10,16 @@ namespace netcoretest.Controllers
     [Route("user")]
     public class WeatherForecastController : ControllerBase
     {
-        private readonly Postgresql db;
-        public WeatherForecastController(Postgresql db)
-        {
-            this.db = db;
-        }
 
-        [HttpGet("/test")]
-        public async Task<IResult> Get(int id)
+        [HttpGet("test")]
+        public async Task<IResult> Get()
         {
             return TypedResults.NoContent();
         }
 
         [HttpGet]
-        public async Task<IResult> Get()
+        [EnableRateLimiting("concurrent")]
+        public async Task<IResult> Get([FromServices] Postgresql db)
         {
             var result = await db.Users.AsNoTracking().ToListAsync();
             return TypedResults.Ok(result);
@@ -31,7 +27,7 @@ namespace netcoretest.Controllers
 
         [HttpPost]
         [EnableRateLimiting("concurrent")]
-        public async Task<IResult> Post([FromBody] UserDTO userDto)
+        public async Task<IResult> Post([FromBody] UserDTO userDto, [FromServices] Postgresql db)
         {
             try
             {

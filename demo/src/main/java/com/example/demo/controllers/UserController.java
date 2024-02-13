@@ -33,9 +33,10 @@ public class UserController {
             return ResponseEntity.noContent().build();
     }
 
+    @SuppressWarnings("rawtypes")
     @GetMapping()
-    public String showSignUpForm() {
-        return "ta";
+    public ResponseEntity showSignUpForm() {
+        return ResponseEntity.noContent().build();
     }
 
 }

@@ -1,19 +1,19 @@
 package com.example.demo.Models;
 
+import java.util.UUID;
+
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Pepe {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pepe_seq")
-    @SequenceGenerator(name = "pepe_seq", sequenceName = "pepe_seq", allocationSize = 1)
-    private long id;
+    @UuidGenerator
+    private UUID id;
 
     @NotBlank(message = "Name is mandatory")
     private String name;
@@ -29,11 +29,11 @@ public class Pepe {
         this.email = email;
     }
 
-    public long getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
