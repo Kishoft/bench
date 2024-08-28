@@ -10,6 +10,6 @@ export const options = {
 };
 
 export default function () {
-  const res = http.get('http://127.0.0.1:3300/tttt', { headers: { 'Content-Type': 'application/json' } });
-  check(res, { 'status was 200': (r) => r.status == 204 });
+  const res = http.get('http://127.0.0.1:3300/tttt/test', { headers: { 'Content-Type': 'application/json' } });
+  check(res, { 'status was 200': (r) => r.status == 200 });
 }

@@ -1,9 +1,8 @@
 package com.example.demo.controllers;
 
-import org.springframework.http.HttpStatus;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
-import org.springframework.scheduling.annotation.Async;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.Models.Pepe;
+import com.example.demo.Models.Sarasa;
 import com.example.demo.Services.UserService;
-import com.example.demo.repositories.UserRepository;
 
 import jakarta.validation.Valid;
 
@@ -37,6 +36,11 @@ public class UserController {
     @GetMapping()
     public ResponseEntity showSignUpForm() {
         return ResponseEntity.noContent().build();
+    }
+
+    @GetMapping("/test")
+    public ResponseEntity<List<Sarasa>> getCachedUsers(){
+        return ResponseEntity.ok(this.userService.getSarasa());
     }
 
 }
