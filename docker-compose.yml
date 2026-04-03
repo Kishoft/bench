@@ -6,7 +6,7 @@ services:
     environment:
       POSTGRES_USER: ezequiel
       POSTGRES_PASSWORD: chichito
-      POSTGRES_MAX_CONNECTIONS: 12000
+      POSTGRES_MAX_CONNECTIONS: 1000
     ports:
       - 5432:5432
   nest:
@@ -41,7 +41,7 @@ services:
     ports:
       - 8080:80
     environment:
-      - PGADMIN_DEFAULT_EMAIL=regaldo.ezequiel@gmail.com
-      - PGADMIN_DEFAULT_PASSWORD=chichito
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
     depends_on:
       - postgresql

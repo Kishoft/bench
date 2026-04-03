@@ -9,6 +9,6 @@ export const options = {
 };
 
 export default function () {
-  const res =  http.get('http://127.0.0.1:3000/tttt/test');
+  const res =  http.get('http://127.0.0.1:3000/users');
   check(res, { 'status was 200': (r) => r.status == 200 });
 }

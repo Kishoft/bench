@@ -10,7 +10,7 @@ export const options = {
 };
 
 export default function () {
-  const res = http.post('http://127.0.0.1:3000/users', JSON.stringify({
+  const res = http.post('http://127.0.0.1:3000/users-raw', JSON.stringify({
     "firstName": "eze",
     "lastName": "quiel",
     "isActive": true

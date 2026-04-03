@@ -1,28 +1,25 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
-import { ClusterService } from './cluster/cluster.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { User } from './user/user.entity';
+import { UserService } from './user/user.service';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'postgresql',
+      host: 'localhost',
       port: 5432,
       username: 'ezequiel',
       password: 'chichito',
       database: 'ezequiel',
+      entities: [User],
       synchronize: true,
       autoLoadEntities: true,
-      connectTimeoutMS: 0,
-      poolSize: 100,
-      maxQueryExecutionTime: 10000000
     }),
-    UserModule
+    TypeOrmModule.forFeature([User]),
   ],
   controllers: [AppController],
-  providers: [AppService, ClusterService],
+  providers: [UserService],
 })
 export class AppModule {}
